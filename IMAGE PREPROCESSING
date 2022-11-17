@@ -1,1 +1,29 @@
 
+
+FOR BODY DAMAGE
+
+IMAGE PRE PROCESSING
+
+1. Import The ImageDataGenerator Library
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+2. Configure ImageDataGenerator Class
+
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                   shear_range = 0.1,
+                                   zoom_range = 0.1,
+                                   horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
+3. Apply ImageDataGenerator Functionality To Trainset And Testset
+
+training_set = train_datagen.flow_from_directory('/content/drive/MyDrive/Intelligent Vehicle Damage Assessment & Cost Estimator For Insurance Companies/Dataset/body/training',
+                                                 target_size = (224, 224),
+                                                 batch_size = 10,
+                                                 class_mode = 'categorical')
+test_set = test_datagen.flow_from_directory('/content/drive/MyDrive/Intelligent Vehicle Damage Assessment & Cost Estimator For Insurance Companies/Dataset/body/validation',
+                                            target_size = (224, 224),
+                                            batch_size = 10,
+                                            class_mode = 'categorical')
+Found 979 images belonging to 3 classes.
+Found 171 images belonging to 3 classes.
